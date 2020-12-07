@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZobristPolyglotCSharp", "ZobristPolyglotCSharp\ZobristPolyglotCSharp.csproj", "{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZobristCSharp", "..\ZobristCSharp\ZobristCSharp\ZobristCSharp.csproj", "{FF53B963-263E-4D58-8E62-2B6275762D91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyglotCSharp", "..\PolyglotCSharp\PolyglotCSharp\PolyglotCSharp.csproj", "{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF53B963-263E-4D58-8E62-2B6275762D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF53B963-263E-4D58-8E62-2B6275762D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF53B963-263E-4D58-8E62-2B6275762D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF53B963-263E-4D58-8E62-2B6275762D91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
