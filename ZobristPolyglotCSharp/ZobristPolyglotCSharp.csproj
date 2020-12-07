@@ -5,4 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PolyglotCSharp\PolyglotCSharp\PolyglotCSharp.csproj" />
+    <ProjectReference Include="..\..\ZobristCSharp\ZobristCSharp\ZobristCSharp.csproj" />
+  </ItemGroup>
+
 </Project>
