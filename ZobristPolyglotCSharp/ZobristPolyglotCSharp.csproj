@@ -6,10 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PolyglotCSharp\PolyglotCSharp\PolyglotCSharp.csproj">
-      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
-      <EmbedInteropTypes>false</EmbedInteropTypes>
-    </ProjectReference>
+    <ProjectReference Include="..\..\PolyglotCSharp\PolyglotCSharp\PolyglotCSharp.csproj" />
     <ProjectReference Include="..\..\ZobristCSharp\ZobristCSharp\ZobristCSharp.csproj" />
   </ItemGroup>
 
