@@ -26,8 +26,7 @@ namespace ZobristPolyglotCSharp
                 TestCaseHashMove(booknameB);
             }
 
-            TestCaseMerge(booknameA, booknameB);
-
+            TestCaseMerge(booknameA, booknameB);    
         }
 
         static bool TestCase(string filename, string bookname)
