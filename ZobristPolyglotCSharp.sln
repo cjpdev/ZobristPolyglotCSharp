@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZobristPolyglotCSharp", "ZobristPolyglotCSharp\ZobristPolyglotCSharp.csproj", "{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZobristPolyglotCSharp", "ZobristPolyglotCSharp\ZobristPolyglotCSharp.csproj", "{6ED0F0F8-B4B5-4384-9A06-215D1C2D02FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZobristCSharp", "..\ZobristCSharp\ZobristCSharp\ZobristCSharp.csproj", "{FF53B963-263E-4D58-8E62-2B6275762D91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolyglotCSharp", "..\PolyglotCSharp\PolyglotCSharp\PolyglotCSharp.csproj", "{1D600016-E04F-4EAF-A4DF-711FCD96BEAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{738D40CE-5473-4140-AA9A-DEC63E336EC1}"
+	ProjectSection(SolutionItems) = preProject
+		ZobristPolyglotCSharp\ZobristHashWorking.cs = ZobristPolyglotCSharp\ZobristHashWorking.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

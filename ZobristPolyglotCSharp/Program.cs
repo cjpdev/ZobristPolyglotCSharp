@@ -7,13 +7,28 @@ namespace ZobristPolyglotCSharp
 {
     class Program
     {
+        static int errorCount = 0;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Chay's chess.\n");
+          
+
+            System.Console.WriteLine("Test Hash");
+            // Get next move from current board loyout, which in this case is      
+            // the first open move. So should be in every openng book.
+            string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+            System.UInt64 knownHash = 5060803636482931868;
+            System.UInt64 hash = ZobristHash.GetHash(fen);
+            System.Console.WriteLine("TEST pass: {0}, Hash {1} : FEN:{0}", (hash == knownHash), hash, fen);
+            System.Console.WriteLine("\n\n");
+            if (hash != knownHash) errorCount++;
+
+
             string filename = "..\\..\\..\\..\\..\\book\\komodo.bin";
             string booknameA = "komodo";
 
-            if(TestCase(filename, booknameA))
+            if(TestCaseLoadBook(filename, booknameA))
             {
                 TestCaseHashMove(booknameA);
             }
@@ -21,15 +36,23 @@ namespace ZobristPolyglotCSharp
             filename = "..\\..\\..\\..\\..\\book\\codekiddy.bin";
             string booknameB = "codekiddy";
 
-            if (TestCase(filename, booknameB))
+            if (TestCaseLoadBook(filename, booknameB))
             {
                 TestCaseHashMove(booknameB);
             }
 
             TestCaseMerge(booknameA, booknameB);    
+
+
+            if(errorCount > 0)
+            {
+                System.Console.WriteLine("*******************************");
+                System.Console.WriteLine("**    {0} TESTS FAILED     ****", errorCount);
+                System.Console.WriteLine("*******************************");
+            }
         }
 
-        static bool TestCase(string filename, string bookname)
+        static bool TestCaseLoadBook(string filename, string bookname)
         {
             Console.Write("\n**** TEST CASE START **** ");
             Console.WriteLine("Load an opening book");
@@ -47,6 +70,8 @@ namespace ZobristPolyglotCSharp
             
             System.Console.WriteLine("Could not load opening book {0}", filename);
             System.Console.WriteLine("**** TEST CASE END: FAILED ****");
+            
+            errorCount++;
 
             return false ;
         }
@@ -66,8 +91,6 @@ namespace ZobristPolyglotCSharp
                 string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
                 System.UInt64 knownHash = 5060803636482931868;
                 System.UInt64 hash = ZobristHash.GetHash(fen);
-
-
                 System.Console.WriteLine("TEST pass: {0}, Hash {1} : FEN:{0}", (hash == knownHash), hash, fen);
 
                 OpeningBooks.Move move = OpeningBooks.GetMoveBest(book, hash);
@@ -81,6 +104,9 @@ namespace ZobristPolyglotCSharp
                 }
             }
             System.Console.WriteLine("**** TEST CASE END: FAILED ****");
+
+            errorCount++;
+
             return false;
         }
 
@@ -116,6 +142,9 @@ namespace ZobristPolyglotCSharp
                    
                 }
             }
+
+            errorCount++;
+
             return false;
         }
     }
