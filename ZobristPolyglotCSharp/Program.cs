@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using PolyglotCSharp;
-using ZobristCSharp;
+using Chess.utils;
+
 
 namespace ZobristPolyglotCSharp
 {
