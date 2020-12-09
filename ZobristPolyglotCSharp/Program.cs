@@ -1,6 +1,30 @@
-﻿using System;
+﻿
+/*************************************************************************/
+/* Copyright (c) 2020 Chay Palton                                        */
+/*                                                                       */
+/* Permission is hereby granted, free of charge, to any person obtaining */
+/* a copy of this software and associated documentation files (the       */
+/* "Software"), to deal in the Software without restriction, including   */
+/* without limitation the rights to use, copy, modify, merge, publish,   */
+/* distribute, sublicense, and/or sell copies of the Software, and to    */
+/* permit persons to whom the Software is furnished to do so, subject to */
+/* the following conditions:                                             */
+/*                                                                       */
+/* The above copyright notice and this permission notice shall be        */
+/* included in all copies or substantial portions of the Software.       */
+/*                                                                       */
+/* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,       */
+/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF    */
+/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.*/
+/* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY  */
+/* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,  */
+/* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
+/* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
+/*************************************************************************/
+
+using System;
 using System.Collections.Generic;
-using Chess.utils;
+using Chess.Utils;
 
 
 namespace ZobristPolyglotCSharp
@@ -11,9 +35,31 @@ namespace ZobristPolyglotCSharp
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Chay's chess.\n");
-          
+            bool runtest = false;
 
+            Console.WriteLine("Chay's chess.\n");
+
+            if (runtest)
+                TestCases();
+            else
+                BookTester();
+        }
+
+        static void BookTester()
+        {
+            // Move tester
+
+            string filename = "..\\..\\..\\..\\..\\book\\komodo.bin";
+            string bookname = "komodo";
+
+            OpeningBooks.Book book = OpeningBooks.LoadBook(bookname, filename);
+            MoveChecker("rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1", bookname);
+        }
+
+        static void TestCases()
+        {
+      
+          
             System.Console.WriteLine("Test Hash");
             // Get next move from current board loyout, which in this case is      
             // the first open move. So should be in every openng book.
@@ -24,7 +70,6 @@ namespace ZobristPolyglotCSharp
             System.Console.WriteLine("\n\n");
             if (hash != knownHash) errorCount++;
 
-
             string filename = "..\\..\\..\\..\\..\\book\\komodo.bin";
             string booknameA = "komodo";
 
@@ -32,7 +77,7 @@ namespace ZobristPolyglotCSharp
             {
                 TestCaseHashMove(booknameA);
             }
-           
+
             filename = "..\\..\\..\\..\\..\\book\\codekiddy.bin";
             string booknameB = "codekiddy";
 
@@ -41,10 +86,10 @@ namespace ZobristPolyglotCSharp
                 TestCaseHashMove(booknameB);
             }
 
-            TestCaseMerge(booknameA, booknameB);    
 
+            TestCaseMerge(booknameA, booknameB);
 
-            if(errorCount > 0)
+            if (errorCount > 0)
             {
                 System.Console.WriteLine("*******************************");
                 System.Console.WriteLine("**    {0} TESTS FAILED     ****", errorCount);
@@ -130,10 +175,8 @@ namespace ZobristPolyglotCSharp
 
                     if (TestCaseHashMove(booknameA) == true)
                     {
-
                         return true;
                     }
-
                 }
                 else
                 {
@@ -147,5 +190,57 @@ namespace ZobristPolyglotCSharp
 
             return false;
         }
+
+
+        static bool MoveChecker(string fen, string bookname = null)
+        {
+            OpeningBooks.Book book = null;
+           System.Console.Write("**** MOVE TESTER  **** ");
+            System.Console.WriteLine("FE:{0}", fen);
+
+           
+            book = OpeningBooks.GetBook(bookname);
+            
+
+            System.Console.WriteLine("Test Hash");
+            ZobristHash.Result result = ZobristHash.GetHashResult(fen);
+            if (result != null)
+            {
+                System.Console.WriteLine(result);
+            } else
+            {
+                System.Console.WriteLine("HASH ERROR..");
+            }
+
+      
+            if (book != null && result != null)
+            {
+                OpeningBooks.Move move = OpeningBooks.GetMoveBest(book, result.hash);
+                List<OpeningBooks.Move> moves = OpeningBooks.GetMoveList(book, result.hash);
+
+                if (move != null)
+                {
+                    System.Console.WriteLine("Found {0} moves", move.ToString());
+
+                    foreach(OpeningBooks.Move m in moves)
+                    {
+                        System.Console.WriteLine(m.strmove);
+                    }
+                } else
+                {
+                    System.Console.WriteLine("No next move for this layout found in book...");
+                }
+            }
+
+            if (book == null)
+            {
+                System.Console.WriteLine("No opening book to test move with.");
+            }
+
+
+            return false;
+        }
     }
 }
+
+
